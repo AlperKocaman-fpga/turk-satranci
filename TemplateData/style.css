@@ -3,10 +3,11 @@ body {
     margin: 0;
     background-color: #050505; 
     font-family: sans-serif;
-    overflow: hidden; /* Kaydırma çubuğunu gizle, oyun ekrana sığacak */
+    overflow: hidden; 
     height: 100vh;
     width: 100vw;
     
+    /* İçerik hep ortada olsun */
     display: flex;
     align-items: center; 
     justify-content: center;
@@ -17,22 +18,21 @@ h1, .game-title { display: none !important; }
 #unity-container {
     position: relative;
     
-    /* --- RESPONSIVE (DUYARLI) AYARLAR --- */
-    
-    /* 1. Genişlik ve Yükseklik sınırları: Ekranın %95'ini geçmesin */
-    width: 95vw;
-    height: 95vh;
-    
-    /* 2. EN ÖNEMLİ KISIM: ORAN KİLİDİ */
-    /* Oyunu 16:9 oranına kilitliyoruz. (1920x1080 standardı) */
-    /* Bu sayede chat ekranı ve tahta asla birbirine girmez. */
-    /* Ekran daralırsa oyun otomatik küçülür ama şekli bozulmaz. */
+    /* --- EN KRİTİK NOKTA: 16:9 KİLİDİ --- */
+    /* Oyunun her zaman 1920x1080 oranında kalmasını sağlar */
     aspect-ratio: 16 / 9;
     
-    /* 3. Sınırlandırma: Eğer ekranın oranı 16:9'dan farklıysa (örn: kare monitör) */
-    /* Oyunun taşmasını engellemek için maksimum sınırları belirliyoruz */
-    max-width: 100%;
-    max-height: 100%;
+    /* --- AKILLI BOYUTLANDIRMA --- */
+    /* 1. Kural: Genişlik ekranın %100'ü olsun (Mobil için) */
+    width: 100vw;
+    
+    /* 2. Kural: Ama Yükseklik ekranın %100'ünü geçerse (Taşarsa)... */
+    /* ...O zaman yüksekliği ekrana göre ayarla (Laptop için) */
+    max-height: 100vh;
+    
+    /* 3. Kural: Eğer buna rağmen çok geniş olursa (Ultra-Wide monitörler) */
+    /* ...O zaman da genişliği yüksekliğe göre ayarla */
+    max-width: 177.78vh; /* (16/9 * 100vh) matematiği */
     
     background: #000; 
     border: 1px solid #008f7a; 
@@ -47,7 +47,6 @@ h1, .game-title { display: none !important; }
 }
 
 #unity-canvas {
-    /* Canvas, kutuyu tamamen doldursun */
     width: 100% !important;
     height: 100% !important;
     background: #232323;
