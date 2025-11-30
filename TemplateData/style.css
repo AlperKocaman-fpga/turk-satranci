@@ -7,46 +7,37 @@ body {
     height: 100vh;
     width: 100vw;
     
-    /* MERKEZLEME GARANTİSİ */
     display: flex;
     align-items: center; 
     justify-content: center;
 }
 
-/* Başlıkları gizle */
 h1, .game-title { display: none !important; }
 
 #unity-container {
-    /* 1. Kural: Ekranın tamamını kaplamasın, biraz boşluk kalsın */
-    width: 100%;
-    height: 100%;
+    position: relative;
     
-    /* 2. Kural: Ama asla 16:9 oranını bozmasın (En boy oranı kilidi) */
-    aspect-ratio: 16 / 9;
-    
-    /* 3. Kural: Ekranın kenarlarına yapışmasın, biraz mesafe olsun (%95) */
-    max-width: 95vw;
-    max-height: 95vh;
+    /* --- ARTIK ESNEMEK YOK, NET BOYUTLAR --- */
+    width: 1280px !important;
+    height: 720px !important;
     
     background: #000; 
     border: 1px solid #008f7a; 
     
-    /* Neon Glow */
+    /* O sevdiğin Neon Işıklar kalıyor */
     box-shadow: 
         0 0 20px rgba(0, 200, 255, 0.4),  
         0 0 50px rgba(0, 255, 128, 0.2);  
         
-    border-radius: 12px;
-    margin: auto; /* Ortalamayı perçinler */
+    border-radius: 8px;
+    margin: auto;
 }
 
 #unity-canvas {
-    /* Canvas, kutuyu tamamen doldursun */
-    width: 100% !important;
-    height: 100% !important;
-    background: #232323; /* Oyun yüklenene kadar görünen renk */
-    border-radius: 12px; 
-    display: block;
+    width: 1280px !important;
+    height: 720px !important;
+    background: #232323;
+    border-radius: 8px; 
 }
 
 #unity-loading-bar {
