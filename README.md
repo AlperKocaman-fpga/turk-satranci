@@ -1,0 +1,3 @@
+This is a Unity project creating a chess game based on Tamerlane Chess (Timur Satrancı). I focused on creating a solid architecture for both single-player and multiplayer modes.
+For the single-player, I wrote a custom AI that evaluates the board state and makes decisions. For the multiplayer part, I used Photon networking to sync moves between players. I also wanted a persistent progression system, so I connected the game to a backend service. This allows users to sign up with a nickname and keep their Elo score forever.
+The game handles complex rules like the 'King Swap' and specific movement patterns of historical pieces. It is optimized for WebGL, so you can play it directly in your browser without downloading anything.
