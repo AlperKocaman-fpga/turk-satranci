@@ -18,8 +18,8 @@ h1, .game-title { display: none !important; }
     position: relative;
     
     /* --- ARTIK ESNEMEK YOK, NET BOYUTLAR --- */
-    width: 1280px !important;
-    height: 720px !important;
+    width: 960px !important;
+    height: 600px !important;
     
     background: #000; 
     border: 1px solid #008f7a; 
@@ -34,8 +34,8 @@ h1, .game-title { display: none !important; }
 }
 
 #unity-canvas {
-    width: 1280px !important;
-    height: 720px !important;
+    width: 960px !important;
+    height: 600px !important;
     background: #232323;
     border-radius: 8px; 
 }
