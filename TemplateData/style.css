@@ -1,51 +1,54 @@
 body {
     padding: 0;
     margin: 0;
-    /* Arka plan: Simsiyah olsun ki neon ışıklar patlasın */
     background-color: #050505; 
     font-family: sans-serif;
     overflow: hidden; 
     height: 100vh;
     width: 100vw;
     
-    /* TAM MERKEZLEME (Flexbox) */
     display: flex;
-    align-items: center;     /* Dikeyde ortalar */
-    justify-content: center; /* Yatayda ortalar */
+    flex-direction: column;
+    align-items: center;    
+    justify-content: center;
 }
+
+/* KESİN ÇÖZÜM: Yazı etiketlerini CSS ile de baskılıyoruz */
+h1, .game-title { display: none !important; }
 
 #unity-container {
     position: relative;
-    width: 960px;
+    
+    /* --- DEĞİŞİKLİK BURADA --- */
+    /* Önceki: 960px / 600px idi (Çok küçüktü) */
+    /* Yeni: 1280px / 720px (Standart HD) - UI rahatlayacak */
+    width: 1280px; 
+    height: 720px; 
+    
+    /* Eğer ekran küçükse (laptop vs.) otomatik küçülsün */
     max-width: 100%;
-    height: 600px;
-    max-height: 90vh; /* Ekranın %90'ını kaplasın, taşmasın */
+    max-height: 100%;
+    aspect-ratio: 16 / 9; /* En-Boy oranını koru */
     
-    background: #000; /* Oyunun arkası siyah */
-    
-    /* --- İSTEĞİN OLAN MAVİ-YEŞİL GEÇİŞLİ EFEKT --- */
-    
-    /* İnce bir çerçeve (Teal/Turkuaz rengi) */
+    background: #000; 
     border: 1px solid #008f7a; 
     
-    /* Neon Parlama (Glow) Efekti */
-    /* İlk gölge: Mavi/Turkuaz, İkinci gölge: Yeşil */
+    /* Neon Glow */
     box-shadow: 
-        0 0 20px rgba(0, 200, 255, 0.4),  /* İçteki Mavi Işık */
-        0 0 50px rgba(0, 255, 128, 0.2);  /* Dışa yayılan Yeşil Işık */
+        0 0 20px rgba(0, 200, 255, 0.4),  
+        0 0 50px rgba(0, 255, 128, 0.2);  
         
-    border-radius: 8px; /* Hafif yuvarlak köşeler */
+    border-radius: 8px;
+    margin: 0 !important; 
 }
 
 #unity-canvas {
     width: 100%;
     height: 100%;
     background: #000;
-    /* Canvas'ın köşeleri de yuvarlak olsun */
     border-radius: 8px; 
 }
 
-/* Yükleme Çubuğu */
 #unity-loading-bar {
     position: absolute;
     left: 50%;
@@ -54,10 +57,7 @@ body {
     display: none;
 }
 
-/* Gereksiz her şeyi gizle */
-#unity-logo { display: none; }
-#unity-footer { display: none; }
-p.game-desc { display: none; }
+#unity-logo, #unity-footer, p.game-desc { display: none !important; }
 
 #unity-progress-bar-empty {
     width: 141px;
