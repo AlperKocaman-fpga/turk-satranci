@@ -7,7 +7,7 @@ body {
     height: 100vh;
     width: 100vw;
     
-    /* İçerik hep ortada olsun */
+    /* İçerik hep tam ortada */
     display: flex;
     align-items: center; 
     justify-content: center;
@@ -18,26 +18,22 @@ h1, .game-title { display: none !important; }
 #unity-container {
     position: relative;
     
-    /* --- EN KRİTİK NOKTA: 16:9 KİLİDİ --- */
-    /* Oyunun her zaman 1920x1080 oranında kalmasını sağlar */
-    aspect-ratio: 16 / 9;
+    /* --- İŞTE KESİN ÇÖZÜM (MATEMATİKSEL KİLİT) --- */
     
-    /* --- AKILLI BOYUTLANDIRMA --- */
-    /* 1. Kural: Genişlik ekranın %100'ü olsun (Mobil için) */
-    width: 100vw;
+    /* 1. Genişlik Hesabı: */
+    /* Ekranın genişliği (100vw) İLE Ekran yüksekliğinin 16:9 karşılığı (177.78vh) arasından KÜÇÜK olanı seç */
+    width: min(100vw, 177.78vh);
     
-    /* 2. Kural: Ama Yükseklik ekranın %100'ünü geçerse (Taşarsa)... */
-    /* ...O zaman yüksekliği ekrana göre ayarla (Laptop için) */
-    max-height: 100vh;
+    /* 2. Yükseklik Hesabı: */
+    /* Ekranın yüksekliği (100vh) İLE Ekran genişliğinin 16:9 karşılığı (56.25vw) arasından KÜÇÜK olanı seç */
+    height: min(100vh, 56.25vw);
     
-    /* 3. Kural: Eğer buna rağmen çok geniş olursa (Ultra-Wide monitörler) */
-    /* ...O zaman da genişliği yüksekliğe göre ayarla */
-    max-width: 177.78vh; /* (16/9 * 100vh) matematiği */
+    /* Bu formül sayesinde oyun ASLA ekranın dışına taşmaz ve ASLA 16:9 oranı bozulmaz. */
     
     background: #000; 
     border: 1px solid #008f7a; 
     
-    /* Neon Glow */
+    /* Neon Glow Efekti (Aynen koruyoruz) */
     box-shadow: 
         0 0 20px rgba(0, 200, 255, 0.4),  
         0 0 50px rgba(0, 255, 128, 0.2);  
@@ -47,6 +43,7 @@ h1, .game-title { display: none !important; }
 }
 
 #unity-canvas {
+    /* Canvas kutuyu tam doldursun */
     width: 100% !important;
     height: 100% !important;
     background: #232323;
