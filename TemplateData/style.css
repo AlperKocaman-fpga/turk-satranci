@@ -7,31 +7,26 @@ body {
     height: 100vh;
     width: 100vw;
     
+    /* MERKEZLEME GARANTİSİ */
     display: flex;
-    flex-direction: column;
-    align-items: center;    
+    align-items: center; 
     justify-content: center;
 }
 
-/* Başlığı gizleme garantisi */
+/* Başlıkları gizle */
 h1, .game-title { display: none !important; }
 
 #unity-container {
-    position: relative;
+    /* 1. Kural: Ekranın tamamını kaplamasın, biraz boşluk kalsın */
+    width: 100%;
+    height: 100%;
     
-    /* --- İŞTE SİHİRLİ AYAR --- */
-    /* Oyuna diyoruz ki: "Genişliğin ekranın %95'i olsun..." */
-    width: 95vw; 
-    /* "...Ama yüksekliğin de ekranın %95'i olsun..." */
-    height: 95vh;
-    
-    /* "...VE EN ÖNEMLİSİ: Şeklin hep 1920x1080 oranında (16:9) kalsın." */
+    /* 2. Kural: Ama asla 16:9 oranını bozmasın (En boy oranı kilidi) */
     aspect-ratio: 16 / 9;
     
-    /* Bu sayede oyun asla sündürülmez, UI asla kaymaz. */
-    /* Ekran darsa daralır, kısaysa kısalır ama hep Full HD gibi görünür. */
-    max-width: 1920px;
-    max-height: 1080px;
+    /* 3. Kural: Ekranın kenarlarına yapışmasın, biraz mesafe olsun (%95) */
+    max-width: 95vw;
+    max-height: 95vh;
     
     background: #000; 
     border: 1px solid #008f7a; 
@@ -41,15 +36,17 @@ h1, .game-title { display: none !important; }
         0 0 20px rgba(0, 200, 255, 0.4),  
         0 0 50px rgba(0, 255, 128, 0.2);  
         
-    border-radius: 8px;
-    margin: 0 !important; 
+    border-radius: 12px;
+    margin: auto; /* Ortalamayı perçinler */
 }
 
 #unity-canvas {
-    width: 100%;
-    height: 100%;
-    background: #000;
-    border-radius: 8px; 
+    /* Canvas, kutuyu tamamen doldursun */
+    width: 100% !important;
+    height: 100% !important;
+    background: #232323; /* Oyun yüklenene kadar görünen renk */
+    border-radius: 12px; 
+    display: block;
 }
 
 #unity-loading-bar {
