@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
+    <!-- BAŞLIK SATIRINI TAMAMEN SİLDİK -->
+    
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
@@ -98,8 +100,12 @@
 
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        
+        // --- DEĞİŞİKLİK BURADA YAPILDI ---
+        // 960px ve 600px yerine %100 kullanıyoruz.
+        // Bu sayede oyun, CSS'te belirlediğimiz neon kutuyu tamamen dolduracak.
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
       }
 
       document.querySelector("#unity-loading-bar").style.display = "block";

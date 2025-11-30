@@ -1,16 +1,75 @@
-body { padding: 0; margin: 0 }
-#unity-container { position: absolute }
-#unity-container.unity-desktop { left: 50%; top: 50%; transform: translate(-50%, -50%) }
-#unity-container.unity-mobile { position: fixed; width: 100%; height: 100% }
-#unity-canvas { background: #231F20 }
-.unity-mobile #unity-canvas { width: 100%; height: 100% }
-#unity-loading-bar { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: none }
-#unity-logo { width: 154px; height: 130px; background: url('unity-logo-dark.png') no-repeat center }
-#unity-progress-bar-empty { width: 141px; height: 18px; margin-top: 10px; margin-left: 6.5px; background: url('progress-bar-empty-dark.png') no-repeat center }
-#unity-progress-bar-full { width: 0%; height: 18px; margin-top: 10px; background: url('progress-bar-full-dark.png') no-repeat center }
-#unity-footer { position: relative }
-.unity-mobile #unity-footer { display: none }
-#unity-logo-title-footer { float:left; width: 102px; height: 38px; background: url('unity-logo-title-footer.png') no-repeat center }
-#unity-build-title { float: right; margin-right: 10px; line-height: 38px; font-family: arial; font-size: 18px }
-#unity-fullscreen-button { cursor:pointer; float: right; width: 38px; height: 38px; background: url('fullscreen-button.png') no-repeat center }
-#unity-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none }
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #050505; 
+    font-family: sans-serif;
+    overflow: hidden; 
+    height: 100vh;
+    width: 100vw;
+    
+    /* İçerik hep tam ortada */
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+h1, .game-title { display: none !important; }
+
+#unity-container {
+    position: relative;
+    
+    /* --- İŞTE KESİN ÇÖZÜM (MATEMATİKSEL KİLİT) --- */
+    
+    /* 1. Genişlik Hesabı: */
+    /* Ekranın genişliği (100vw) İLE Ekran yüksekliğinin 16:9 karşılığı (177.78vh) arasından KÜÇÜK olanı seç */
+    width: min(100vw, 177.78vh);
+    
+    /* 2. Yükseklik Hesabı: */
+    /* Ekranın yüksekliği (100vh) İLE Ekran genişliğinin 16:9 karşılığı (56.25vw) arasından KÜÇÜK olanı seç */
+    height: min(100vh, 56.25vw);
+    
+    /* Bu formül sayesinde oyun ASLA ekranın dışına taşmaz ve ASLA 16:9 oranı bozulmaz. */
+    
+    background: #000; 
+    border: 1px solid #008f7a; 
+    
+    /* Neon Glow Efekti (Aynen koruyoruz) */
+    box-shadow: 
+        0 0 20px rgba(0, 200, 255, 0.4),  
+        0 0 50px rgba(0, 255, 128, 0.2);  
+        
+    border-radius: 8px;
+    margin: auto;
+}
+
+#unity-canvas {
+    /* Canvas kutuyu tam doldursun */
+    width: 100% !important;
+    height: 100% !important;
+    background: #232323;
+    border-radius: 8px; 
+}
+
+#unity-loading-bar {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+#unity-logo, #unity-footer, p.game-desc { display: none !important; }
+
+#unity-progress-bar-empty {
+    width: 141px;
+    height: 18px;
+    margin-top: 10px;
+    background: url('progress-bar-empty-dark.png') no-repeat center;
+}
+
+#unity-progress-bar-full {
+    width: 0%;
+    height: 18px;
+    margin-top: 10px;
+    background: url('progress-bar-full-dark.png') no-repeat center;
+}
