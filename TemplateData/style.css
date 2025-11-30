@@ -13,22 +13,25 @@ body {
     justify-content: center;
 }
 
-/* KESİN ÇÖZÜM: Yazı etiketlerini CSS ile de baskılıyoruz */
+/* Başlığı gizleme garantisi */
 h1, .game-title { display: none !important; }
 
 #unity-container {
     position: relative;
     
-    /* --- DEĞİŞİKLİK BURADA --- */
-    /* Önceki: 960px / 600px idi (Çok küçüktü) */
-    /* Yeni: 1280px / 720px (Standart HD) - UI rahatlayacak */
-    width: 1280px; 
-    height: 720px; 
+    /* --- İŞTE SİHİRLİ AYAR --- */
+    /* Oyuna diyoruz ki: "Genişliğin ekranın %95'i olsun..." */
+    width: 95vw; 
+    /* "...Ama yüksekliğin de ekranın %95'i olsun..." */
+    height: 95vh;
     
-    /* Eğer ekran küçükse (laptop vs.) otomatik küçülsün */
-    max-width: 100%;
-    max-height: 100%;
-    aspect-ratio: 16 / 9; /* En-Boy oranını koru */
+    /* "...VE EN ÖNEMLİSİ: Şeklin hep 1920x1080 oranında (16:9) kalsın." */
+    aspect-ratio: 16 / 9;
+    
+    /* Bu sayede oyun asla sündürülmez, UI asla kaymaz. */
+    /* Ekran darsa daralır, kısaysa kısalır ama hep Full HD gibi görünür. */
+    max-width: 1920px;
+    max-height: 1080px;
     
     background: #000; 
     border: 1px solid #008f7a; 
