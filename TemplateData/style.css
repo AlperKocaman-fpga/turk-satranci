@@ -1,40 +1,48 @@
 body {
     padding: 0;
     margin: 0;
-    background: radial-gradient(circle at center, #1a1a2e 0%, #0f0f1a 50%, #000000 100%);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #e0e0e0;
+    /* Arka plan: Simsiyah olsun ki neon ışıklar patlasın */
+    background-color: #050505; 
+    font-family: sans-serif;
     overflow: hidden; 
     height: 100vh;
     width: 100vw;
     
-    /* MERKEZLEME AYARLARI (DÜZELTİLDİ) */
+    /* TAM MERKEZLEME (Flexbox) */
     display: flex;
-    flex-direction: column;
-    align-items: center;     /* Yatayda ortalar */
-    justify-content: center; /* Dikeyde ortalar */
+    align-items: center;     /* Dikeyde ortalar */
+    justify-content: center; /* Yatayda ortalar */
 }
 
-/* Oyunun Çerçevesi */
 #unity-container {
     position: relative;
-    /* Eğer ekran küçükse oyun taşmasın diye max-width ekledik */
     width: 960px;
-    max-width: 100%; 
+    max-width: 100%;
     height: 600px;
-    max-height: 80vh; /* Yükseklik ekranın %80'ini geçmesin */
+    max-height: 90vh; /* Ekranın %90'ını kaplasın, taşmasın */
     
-    background: rgba(0, 0, 0, 0.8);
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(100, 100, 255, 0.15);
-    border-radius: 12px;
-    border: 1px solid #333;
-    overflow: hidden;
+    background: #000; /* Oyunun arkası siyah */
+    
+    /* --- İSTEĞİN OLAN MAVİ-YEŞİL GEÇİŞLİ EFEKT --- */
+    
+    /* İnce bir çerçeve (Teal/Turkuaz rengi) */
+    border: 1px solid #008f7a; 
+    
+    /* Neon Parlama (Glow) Efekti */
+    /* İlk gölge: Mavi/Turkuaz, İkinci gölge: Yeşil */
+    box-shadow: 
+        0 0 20px rgba(0, 200, 255, 0.4),  /* İçteki Mavi Işık */
+        0 0 50px rgba(0, 255, 128, 0.2);  /* Dışa yayılan Yeşil Işık */
+        
+    border-radius: 8px; /* Hafif yuvarlak köşeler */
 }
 
 #unity-canvas {
     width: 100%;
     height: 100%;
     background: #000;
+    /* Canvas'ın köşeleri de yuvarlak olsun */
+    border-radius: 8px; 
 }
 
 /* Yükleme Çubuğu */
@@ -46,8 +54,10 @@ body {
     display: none;
 }
 
+/* Gereksiz her şeyi gizle */
 #unity-logo { display: none; }
 #unity-footer { display: none; }
+p.game-desc { display: none; }
 
 #unity-progress-bar-empty {
     width: 141px;
@@ -62,25 +72,3 @@ body {
     margin-top: 10px;
     background: url('progress-bar-full-dark.png') no-repeat center;
 }
-
-/* --- BAŞLIK AYARLARI (KÜÇÜLTÜLDÜ) --- */
-h1.game-title {
-    /* Boyutu 3rem'den 1.8rem'e düşürdük, daha kibar oldu */
-    font-size: 1.8rem; 
-    
-    /* Alt boşluğu azalttık, oyunla başlık birbirine yaklaştı */
-    margin-bottom: 15px; 
-    margin-top: 0;
-    
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 3px; /* Harf aralığını biraz daralttık */
-    
-    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 0px 0px 15px rgba(191, 149, 63, 0.2);
-}
-
-p.game-desc { display: none; }
