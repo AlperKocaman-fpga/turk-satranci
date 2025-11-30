@@ -7,49 +7,55 @@ body {
     height: 100vh;
     width: 100vw;
     
-    /* İçerik hep tam ortada */
+    /* İçerik hep ekranın tam ortasında olsun */
     display: flex;
     align-items: center; 
     justify-content: center;
 }
 
+/* Varsa başlıkları gizle */
 h1, .game-title { display: none !important; }
 
 #unity-container {
     position: relative;
-    
-    /* --- İŞTE KESİN ÇÖZÜM (MATEMATİKSEL KİLİT) --- */
-    
-    /* 1. Genişlik Hesabı: */
-    /* Ekranın genişliği (100vw) İLE Ekran yüksekliğinin 16:9 karşılığı (177.78vh) arasından KÜÇÜK olanı seç */
-    width: min(100vw, 177.78vh);
-    
-    /* 2. Yükseklik Hesabı: */
-    /* Ekranın yüksekliği (100vh) İLE Ekran genişliğinin 16:9 karşılığı (56.25vw) arasından KÜÇÜK olanı seç */
-    height: min(100vh, 56.25vw);
-    
-    /* Bu formül sayesinde oyun ASLA ekranın dışına taşmaz ve ASLA 16:9 oranı bozulmaz. */
-    
     background: #000; 
-    border: 1px solid #008f7a; 
     
-    /* Neon Glow Efekti (Aynen koruyoruz) */
-    box-shadow: 
-        0 0 20px rgba(0, 200, 255, 0.4),  
-        0 0 50px rgba(0, 255, 128, 0.2);  
-        
+    /* --- ALTIN ORAN KİLİDİ (KESİN ÇÖZÜM) --- */
+    /* Bu matematiksel formül, 16:9 oranını her ekranda korur */
+    
+    /* 1. Genişlik: Ekran genişliği (100vw) olsun... */
+    width: 100vw; 
+    
+    /* ...AMA yükseklik 16:9 oranını bozacak kadar büyürse genişliği sınırla. */
+    /* (100vh * 16 / 9 = 177.78vh) */
+    max-width: 177.78vh; 
+    
+    /* 2. Yükseklik: Genişliğe göre 16:9 oranı (56.25vw) olsun... */
+    height: 56.25vw;
+    
+    /* ...AMA ekran yüksekliğini (100vh) geçerse orada dur. */
+    max-height: 100vh;
+    
+    /* Bu kombinasyon sayesinde oyun; */
+    /* - Telefondaysa: Ekrana sığacak kadar küçülür (Buttonlar kaymaz) */
+    /* - Bilgisayardaysa: Ekranı doldurur. */
+    
+    /* Çerçeve ve Neon */
+    border: 1px solid #008f7a; 
+    box-shadow: 0 0 20px rgba(0, 200, 255, 0.4), 0 0 50px rgba(0, 255, 128, 0.2);  
     border-radius: 8px;
     margin: auto;
 }
 
 #unity-canvas {
-    /* Canvas kutuyu tam doldursun */
-    width: 100% !important;
-    height: 100% !important;
+    width: 100%;
+    height: 100%;
     background: #232323;
     border-radius: 8px; 
+    display: block;
 }
 
+/* Yükleme Çubuğu Ortalaması */
 #unity-loading-bar {
     position: absolute;
     left: 50%;
@@ -58,6 +64,7 @@ h1, .game-title { display: none !important; }
     display: none;
 }
 
+/* Gereksizleri gizle */
 #unity-logo, #unity-footer, p.game-desc { display: none !important; }
 
 #unity-progress-bar-empty {
