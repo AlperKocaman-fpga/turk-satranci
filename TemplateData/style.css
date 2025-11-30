@@ -1,28 +1,32 @@
 body {
     padding: 0;
     margin: 0;
-    /* Havalı bir arka plan (Koyu Lacivert - Siyah geçişli) */
     background: radial-gradient(circle at center, #1a1a2e 0%, #0f0f1a 50%, #000000 100%);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #e0e0e0; /* Yazı rengi: Kırık beyaz */
-    overflow: hidden; /* Kaydırma çubuklarını gizle */
+    color: #e0e0e0;
+    overflow: hidden; 
     height: 100vh;
+    width: 100vw;
+    
+    /* MERKEZLEME AYARLARI (DÜZELTİLDİ) */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify_content: center;
+    align-items: center;     /* Yatayda ortalar */
+    justify-content: center; /* Dikeyde ortalar */
 }
 
 /* Oyunun Çerçevesi */
 #unity-container {
     position: relative;
-    width: 960px; /* Senin oyun boyutuna göre ayarlar */
+    /* Eğer ekran küçükse oyun taşmasın diye max-width ekledik */
+    width: 960px;
+    max-width: 100%; 
     height: 600px;
-    background: rgba(0, 0, 0, 0.8); /* Oyun arkası hafif şeffaf siyah */
+    max-height: 80vh; /* Yükseklik ekranın %80'ini geçmesin */
     
-    /* ÖNEMLİ: Kutuya gölge ve parlama efekti veriyoruz */
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(100, 100, 255, 0.2);
-    border-radius: 12px; /* Köşeleri yuvarlat */
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(100, 100, 255, 0.15);
+    border-radius: 12px;
     border: 1px solid #333;
     overflow: hidden;
 }
@@ -33,7 +37,7 @@ body {
     background: #000;
 }
 
-/* Yükleme Çubuğu Özelleştirme */
+/* Yükleme Çubuğu */
 #unity-loading-bar {
     position: absolute;
     left: 50%;
@@ -42,12 +46,8 @@ body {
     display: none;
 }
 
-#unity-logo {
-    width: 154px;
-    height: 130px;
-    background: url('unity-logo-dark.png') no-repeat center;
-    display: none; /* Unity logosunu gizlemek istersen display: none yap */
-}
+#unity-logo { display: none; }
+#unity-footer { display: none; }
 
 #unity-progress-bar-empty {
     width: 141px;
@@ -63,28 +63,24 @@ body {
     background: url('progress-bar-full-dark.png') no-repeat center;
 }
 
-/* Alt kısımdaki Footer (Unity yazısı vb.) */
-#unity-footer {
-    display: none; /* Alt kısmı tamamen gizle, daha temiz dursun */
-}
-
-/* Kendi Başlığımız İçin Stil */
+/* --- BAŞLIK AYARLARI (KÜÇÜLTÜLDÜ) --- */
 h1.game-title {
-    margin-bottom: 20px;
-    font-size: 3rem;
-    font-weight: 700;
+    /* Boyutu 3rem'den 1.8rem'e düşürdük, daha kibar oldu */
+    font-size: 1.8rem; 
+    
+    /* Alt boşluğu azalttık, oyunla başlık birbirine yaklaştı */
+    margin-bottom: 15px; 
+    margin-top: 0;
+    
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 5px;
-    /* Altın Sarısı / Metalik efekt */
+    letter-spacing: 3px; /* Harf aralığını biraz daralttık */
+    
     background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0px 0px 10px rgba(191, 149, 63, 0.3);
+    text-shadow: 0px 0px 15px rgba(191, 149, 63, 0.2);
 }
 
-p.game-desc {
-    margin-top: 10px;
-    font-size: 1rem;
-    color: #888;
-}
+p.game-desc { display: none; }
