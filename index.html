@@ -5,9 +5,49 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity Web Player | TimurSatranci</title>
   </head>
+<<<<<<< HEAD
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
     <canvas id="unity-canvas" width=960 height=600 tabindex="-1" style="width: 960px; height: 600px; background: #231F20"></canvas>
     <script src="Build/TurkSatranci.loader.js"></script>
+=======
+
+  <body>
+
+    <!-- BAŞLIK SATIRINI TAMAMEN SİLDİK -->
+
+    
+
+    <div id="unity-container" class="unity-desktop">
+
+      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+
+      <div id="unity-loading-bar">
+
+        <div id="unity-logo"></div>
+
+        <div id="unity-progress-bar-empty">
+
+          <div id="unity-progress-bar-full"></div>
+
+        </div>
+
+      </div>
+
+      <div id="unity-warning"> </div>
+
+      <div id="unity-footer">
+
+        <div id="unity-logo-title-footer"></div>
+
+        <div id="unity-fullscreen-button"></div>
+
+        <div id="unity-build-title">TimurSatranci</div>
+
+      </div>
+
+    </div>
+
+>>>>>>> 0bf5acbcf72a761cea5a3d75b8021083babdfd50
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
@@ -27,9 +67,19 @@
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
         arguments: [],
+<<<<<<< HEAD
         dataUrl: "Build/TurkSatranci.data",
         frameworkUrl: "Build/TurkSatranci.framework.js",
         codeUrl: "Build/TurkSatranci.wasm",
+=======
+
+        dataUrl: buildUrl + "/TurkSatranci.data",
+
+        frameworkUrl: buildUrl + "/TurkSatranci.framework.js",
+
+        codeUrl: buildUrl + "/TurkSatranci.wasm",
+
+>>>>>>> 0bf5acbcf72a761cea5a3d75b8021083babdfd50
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "TimurSatranci",
